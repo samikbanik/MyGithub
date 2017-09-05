@@ -1,5 +1,5 @@
 import {
-  EMAIL_CHANGED,
+  USERNAME_CHANGED,
   PASSWORD_CHANGED,
   LOGIN_USER_SUCCESS,
   LOGIN_USER_FAIL,
@@ -13,9 +13,9 @@ import {
 } from './types';
 import Base64 from '../components/Base64';
 
-export const emailChanged = (text) => {
+export const usernameChanged = (text) => {
   return {
-    type: EMAIL_CHANGED,
+    type: USERNAME_CHANGED,
     payload: text
   };
 };

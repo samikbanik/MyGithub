@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, Image, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
-import { Header, List, ListItem } from 'react-native-elements';
+import { List, ListItem } from 'react-native-elements';
 import { getCommits } from '../actions';
 import { Calendar } from './Calendar';
 import { StackNavigator } from "react-navigation";

@@ -2,17 +2,14 @@ import React, { Component } from 'react';
 import { Text, View, StyleSheet, Image } from 'react-native';
 import { connect } from 'react-redux';
 import { FormLabel, FormInput, Header, Button } from 'react-native-elements';
-import { emailChanged, passwordChanged, loginUser } from '../actions';
+import { usernameChanged, passwordChanged, loginUser } from '../actions';
 import { Spinner } from './common';
 import { StackNavigator, NavigationActions } from "react-navigation";
 
 class LoginForm extends Component {
 
-  componentWillMount() {
-  }
-
-  onEmailChange(text) {
-    this.props.emailChanged(text);
+  onUsernameChange(text) {
+    this.props.usernameChanged(text);
   }
 
   onPasswordChange(text) {
@@ -67,7 +64,7 @@ class LoginForm extends Component {
         <View style={styles.list}>
           <FormLabel labelStyle={styles.labelStyle}>Username</FormLabel>
           <FormInput
-            onChangeText={this.onEmailChange.bind(this)}
+            onChangeText={this.onUsernameChange.bind(this)}
             value={this.props.username}
             placeholder='username'
           />
@@ -112,4 +109,4 @@ const mapStateToProps = ({ auth }) => {
   return { username, password, user, error, loading };
 };
 
-export default connect(mapStateToProps, { emailChanged, passwordChanged, loginUser })(LoginForm);
+export default connect(mapStateToProps, { usernameChanged, passwordChanged, loginUser })(LoginForm);
