@@ -1,0 +1,11 @@
+export const EMAIL_CHANGED = 'email_changed';
+export const PASSWORD_CHANGED = 'password_changed';
+export const LOGIN_USER_SUCCESS = 'login_user_success';
+export const LOGIN_USER_FAIL = 'login_user_fail';
+export const LOGIN_USER = 'login_user';
+export const GET_REPOSITORIES = 'get_repositories';
+export const GET_REPOSITORIES_SUCCESS = 'get_repositories_success';
+export const GET_REPOSITORIES_FAIL = 'get_repositories_fail';
+export const GET_COMMITS = 'get_commits';
+export const GET_COMMITS_SUCCESS = 'get_commits_success';
+export const GET_COMMITS_FAIL = 'get_commits_fail';
