@@ -35,7 +35,7 @@ class LoginForm extends Component {
     );
   }
 
-  navigatetToRepositories() {
+  navigateToRepositories() {
     const { username, password } = this.props;
     const resetAction = NavigationActions.reset({
       index: 0,
@@ -48,7 +48,7 @@ class LoginForm extends Component {
 
   componentDidUpdate() {
     if(this.props.user){
-      this.navigatetToRepositories();
+      this.navigateToRepositories();
     }
   }
 
@@ -77,7 +77,6 @@ class LoginForm extends Component {
           />
         </View>
         <View>{this.renderButton()}</View>
-
         <Text style={styles.errorStyle}>{this.props.error}</Text>
       </View>
     );

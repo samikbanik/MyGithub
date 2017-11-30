@@ -9,7 +9,9 @@ import {
   GET_REPOSITORIES_FAIL,
   GET_COMMITS,
   GET_COMMITS_SUCCESS,
-  GET_COMMITS_FAIL
+  GET_COMMITS_FAIL,
+  SEARCH_CHANGED,
+  SEARCH_USER
 } from './types';
 import Base64 from '../components/Base64';
 
@@ -64,10 +66,10 @@ const loginUserSuccess = (dispatch, user) => {
   });
 };
 
-export const getRepositories = (username, password) => {
+export const getRepositories = (user, username, password) => {
   return (dispatch) => {
     dispatch({ type: GET_REPOSITORIES });
-    fetch('https://api.github.com/users/' + username + '/repos' , {
+    fetch('https://api.github.com/users/' + user + '/repos' , {
       method: 'GET',
       headers: {
         'Accept': 'application/json',
@@ -76,7 +78,10 @@ export const getRepositories = (username, password) => {
       }
     })
       .then((response) => response.json())
-      .then((responseJson) => getRepositoriesSuccess(dispatch, responseJson))
+      .then((responseJson) => {
+        console.log('Repositories: ',responseJson);
+        getRepositoriesSuccess(dispatch, responseJson);
+      })
       .catch((error) => getRepositoriesFail(dispatch, error));
   };
 }
@@ -124,4 +129,11 @@ const getCommitsFail = (dispatch, error) => {
     type: GET_COMMITS_FAIL,
     payload: error
   });
-}
+};
+
+export const searchChanged = (searchedUser) => {
+  return {
+    type: SEARCH_CHANGED,
+    payload: searchedUser
+  };
+};

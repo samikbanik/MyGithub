@@ -1,4 +1,4 @@
-export const USERNAME_CHANGED = 'username_changed';  
+export const USERNAME_CHANGED = 'username_changed';
 export const PASSWORD_CHANGED = 'password_changed';
 export const LOGIN_USER_SUCCESS = 'login_user_success';
 export const LOGIN_USER_FAIL = 'login_user_fail';
@@ -9,3 +9,5 @@ export const GET_REPOSITORIES_FAIL = 'get_repositories_fail';
 export const GET_COMMITS = 'get_commits';
 export const GET_COMMITS_SUCCESS = 'get_commits_success';
 export const GET_COMMITS_FAIL = 'get_commits_fail';
+export const SEARCH_CHANGED = 'search_changed';
+export const SEARCH_USER = 'search_user';

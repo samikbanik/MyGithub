@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Image, ScrollView } from 'react-native';
+import { Text, View, StyleSheet, Image, ScrollView, ActivityIndicator, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { List, ListItem } from 'react-native-elements';
 import { getRepositories } from '../actions';
@@ -10,7 +10,7 @@ class Repositories extends Component {
 
   componentWillMount() {
     const { params } = this.props.navigation.state;
-    this.props.getRepositories(params.username, params.password);
+    this.props.getRepositories(this.props.username, this.props.username, this.props.password);
   }
 
   onRepositorySelect(repo) {
@@ -27,7 +27,8 @@ class Repositories extends Component {
         title: 'Repositories',
         headerLeft: null,
         headerStyle: {backgroundColor: '#009688'},
-        headerTitleStyle:{ color: '#fff', alignSelf: 'center', fontSize: 20}
+        headerTitleStyle:{ color: '#fff', alignSelf: 'center', fontSize: 20},
+        headerRight: <TouchableOpacity onPress={()=>navigation.navigate('Search')}><Image style={{tintColor: '#fff', width:30, height: 30, marginRight: 10}} source={require('./img/search.png')}/></TouchableOpacity>
     });
 
   render() {
@@ -59,7 +60,11 @@ class Repositories extends Component {
             </List>
           </ScrollView>
       );
-    }else{
+    } else if(this.props.loading) {
+      return(
+        <ActivityIndicator size='large' />
+      );
+    } else{
       return (
         <Text style={styles.noDataStyle}>No repositories available</Text>
       );
@@ -84,6 +89,10 @@ const styles = StyleSheet.create({
   }
 });
 
-const mapStateToProps = ({ repositories }) => (repositories);
+const mapStateToProps = ({ auth, repositories }) => {
+  const {username, password} = auth;
+  const {data, loading} = repositories;
+  return {username, password, data, loading};
+};
 
 export default connect(mapStateToProps, { getRepositories })(Repositories);
